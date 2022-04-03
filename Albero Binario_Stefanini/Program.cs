@@ -53,25 +53,48 @@ namespace Albero_Binario_Stefanini
                 return false;
             }
 
+            //public override string ToString()
+            //{
+            //    if (dx != null && sx != null)
+            //    {
+            //        return this.val + "(" + sx + "," + dx + ")";
+            //    }
+            //    else if (sx == null && dx == null)
+            //    {
+            //        return this.val + "";
+            //    }
+            //    else if (sx != null && dx == null)
+            //    {
+            //        return this.val + "(" + sx + "," + 0 + ")";
+            //    }
+            //    else
+            //    {
+            //        return this.val + "(" + 0 + "," + dx + ")";
+            //    }
+            //}
+
             public override string ToString()
             {
-                if (dx != null && sx != null)
-                {
-                    return this.val + "(" + sx + "," + dx + ")";
+                Stack<AlberoBinario> p = new Stack<AlberoBinario>();
+                AlberoBinario t = this;
+                string s = "";
+                p.Push(t);
 
-                }
-                else if (sx == null && dx == null)
+                while (p.Count > 0)
                 {
-                    return this.val + "";
+                    t = p.Pop();
+                    s += t.val + " ";
+
+                    if(t.dx != null)
+                    {
+                        p.Push(t.dx);
+                    }
+                    if (t.sx != null)
+                    {
+                        p.Push(t.sx);
+                    }
                 }
-                else if (sx != null && dx == null)
-                {
-                    return this.val + "(" + sx + "," + 0 + ")";
-                }
-                else
-                {
-                    return this.val + "(" + 0 + "," + dx + ")";
-                }
+                return s;
             }
         }
 
