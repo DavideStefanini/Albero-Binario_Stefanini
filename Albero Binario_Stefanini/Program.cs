@@ -181,6 +181,52 @@ namespace Albero_Binario_Stefanini
                 Console.WriteLine();
             }
 
+            public void stampaRicorsivaSimmetrica()
+            {
+                if (this.sx == null && this.dx == null)
+                {
+                    System.Console.Write(this.val + " ");
+                }
+                else
+                {
+                    this.sx.stampaRicorsivaSimmetrica();
+
+                    System.Console.Write(this.val + " ");
+
+                    this.dx.stampaRicorsivaSimmetrica();
+                }
+            }
+
+            public void stampaIterativaSimmetrica()
+            {
+                Stack<AlberoBinario> s = new Stack<AlberoBinario>();
+                s.Push(this);
+                AlberoBinario tmp = null;
+                while (s.Count != 0)
+                {
+                    tmp = s.Peek();
+                    while (tmp.sx != null)
+                    {
+                        s.Push(tmp.sx);
+                        tmp = tmp.sx;
+                    }
+                    do
+                    {
+                        if (s.Count != 0)
+                        {
+                            tmp = s.Pop();
+                            Console.Write(tmp.val + " ");
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            return;
+                        }
+                    } while (tmp.dx == null);
+                    s.Push(tmp.dx);
+                }
+            }
+
             public int Profondità()
             {
                 Stack<AlberoBinario> s = new Stack<AlberoBinario>();
@@ -300,13 +346,17 @@ namespace Albero_Binario_Stefanini
             Console.WriteLine("------------------------------------------------------------------");
             a.stampaPosticipata();
             Console.WriteLine("------------------------------------------------------------------");
-            /*
-            a.aggiungiFiglioSx(new AlberoBinario(7));
+            a.stampaIterativaSimmetrica();
+            Console.WriteLine("------------------------------------------------------------------");
+            a.stampaRicorsivaSimmetrica();
+            Console.WriteLine();
+            Console.WriteLine("------------------------------------------------------------------");
+
+            /*a.aggiungiFiglioSx(new AlberoBinario(7));
             a.aggiungiFiglioSx(new AlberoBinario(6));*/
             a.alberoDegenere();
             
-
-
+            
             Console.ReadKey();
         }
     }
