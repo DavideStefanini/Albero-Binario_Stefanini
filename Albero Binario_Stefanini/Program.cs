@@ -121,7 +121,7 @@ namespace Albero_Binario_Stefanini
                 Console.WriteLine();
             }
 
-            public void stampaSimmetrica()
+            public void stampaAmpiezza()
             {
                 Queue<AlberoBinario> c = new Queue<AlberoBinario>();
                 AlberoBinario t = this;
@@ -296,7 +296,7 @@ namespace Albero_Binario_Stefanini
             Console.WriteLine("------------------------------------------------------------------");
             a.stampaAnticipata();
             Console.WriteLine("------------------------------------------------------------------");
-            a.stampaSimmetrica();
+            a.stampaAmpiezza();
             Console.WriteLine("------------------------------------------------------------------");
             a.stampaPosticipata();
             Console.WriteLine("------------------------------------------------------------------");
