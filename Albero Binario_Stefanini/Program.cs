@@ -230,49 +230,49 @@ namespace Albero_Binario_Stefanini
 
 
 
-            public void alberoDegeneroSxDxGen()
+            public void alberoDegenere()
             {
                 Stack<AlberoBinario> p = new Stack<AlberoBinario>();
                 AlberoBinario t = this;
                 p.Push(t);
-                bool DenSx = false;
-                bool DenDx = false;
-                bool generico = false;
+                bool DegSx = false;
+                bool DegDx = false;
+                bool nonDeg = false;
 
                 while (p.Count > 0)
                 {
                     t = p.Pop();
                     if(t.dx != null&& t.sx != null)
                     {
-                        generico = true;
+                        nonDeg = true;
                     }
                     if (t.dx != null)
                     {
-                        DenDx = true;
+                        DegDx = true;
                         p.Push(t.dx);
                     }
                     if (t.sx != null)
                     {
-                        DenSx = true;
+                        DegSx = true;
                         p.Push(t.sx);
                     }
                 }
 
 
-                if (generico == true)
+                if (nonDeg == true)
                 {
-                    Console.WriteLine("L'albero è generico");
-                }else if(DenDx==true && DenSx == false)
+                    Console.WriteLine("L'albero non è degenere");
+                }else if(DegDx==true && DegSx == false)
                 {
                     Console.WriteLine("L'albero è degenere destro");
                 }
-                else if (DenSx == true && DenDx == false)
+                else if (DegSx == true && DegDx == false)
                 {
                     Console.WriteLine("L'albero è degenere sinistro");
                 }
                 else
                 {
-                    Console.WriteLine("L'albero è generico");
+                    Console.WriteLine("L'albero è degenere generico");
                 }
             }
         }
@@ -303,7 +303,7 @@ namespace Albero_Binario_Stefanini
             /*
             a.aggiungiFiglioSx(new AlberoBinario(7));
             a.aggiungiFiglioSx(new AlberoBinario(6));*/
-            a.alberoDegeneroSxDxGen();
+            a.alberoDegenere();
             
 
 
